@@ -1,7 +1,7 @@
 services:
-
   postgres:
     image: postgres:17
+    container_name: postgres_restore
 
     environment:
       POSTGRES_USER: postgres
@@ -13,6 +13,8 @@ services:
 
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./backup:/backup
+      - ./init:/docker-entrypoint-initdb.d
 
 volumes:
-  postgres_data:
+  postgres_data: {}
